@@ -40,12 +40,20 @@ public class LuceneSource {
 				Iterator<IndexableField> iterator = doc.iterator();
 				
 				
-				jsonobj = new JsonObject();
+//				jsonobj = new JsonObject();
+//				while (iterator.hasNext()) {
+//					IndexableField entry = iterator.next();
+//					jsonobj.addProperty(entry.name(), entry.stringValue());
+//				}
+//				TaskQueue.put(jsonobj.toString());
+				
+				StringBuilder builder =new StringBuilder();
 				while (iterator.hasNext()) {
 					IndexableField entry = iterator.next();
-					jsonobj.addProperty(entry.name(), entry.stringValue());
+					builder.append(entry.stringValue());
 				}
-				TaskQueue.put(jsonobj.toString());
+				TaskQueue.put(builder.toString());
+				
 			}
 			if (newlastdoc != lastdoc) {
 				searchPageBySearchAfter(indexDir, queryString, pageSize, newlastdoc);
