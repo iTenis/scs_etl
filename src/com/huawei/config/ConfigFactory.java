@@ -66,7 +66,7 @@ public class ConfigFactory {
 		if("".equals(sinkbatchsize)||null==sinkbatchsize) {
 			c.setSinkbathsize("2000");
 		}
-		if("".equals(sinkbatchsize)||null==sinkbatchsize) {
+		if("".equals(sinkthread)||null==sinkthread) {
 			c.setSinkthread("2");
 		}
 			
