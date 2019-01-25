@@ -38,6 +38,8 @@ public class LuceneSource {
 			for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
 				doc = LuceneClientFactory.getIndexsearch().doc(scoreDoc.doc);
 				Iterator<IndexableField> iterator = doc.iterator();
+				
+				
 				jsonobj = new JsonObject();
 				while (iterator.hasNext()) {
 					IndexableField entry = iterator.next();
