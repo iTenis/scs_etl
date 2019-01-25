@@ -19,7 +19,7 @@ public class Consumer implements Runnable {
 				String line="";
 				int count=0;
 				List<String> list = new ArrayList<String>();
-				while(count<20000) {
+				while(count<Integer.valueOf(App.cmd.getSinkbathsize())) {
 					count++;
 					line=TaskQueue.getTaskQueue().poll()+"";
 					if(!line.equals("")&&null!=line&&!"null".equals(line)) {

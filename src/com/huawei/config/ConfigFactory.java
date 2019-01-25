@@ -17,6 +17,8 @@ public class ConfigFactory {
 	private static CommandLineConfig c;
 	private static Logger logger = LoggerFactory.getLogger(ConfigFactory.class);
 	private static final String[] ACTION_TYPE = new String[] { "a", "actiontype" };
+	private static final String[] SINKBATHSIZE = new String[] { "s", "sinkbathsize" };
+	private static final String[] SINKTHREAD = new String[] { "t", "sinkthread" };
 	private static final String[] SINK_TYPE = new String[] { "k", "sinktype" };
 	private static final String[] SOURCE_TYPE = new String[] { "e", "sourcetype" };
 	private static final String[] OUTPUT = new String[] { "o", "output" };
@@ -30,6 +32,8 @@ public class ConfigFactory {
 	public static CommandLineConfig getConfigFromArgs(String[] args) throws ParseException {
 		CommandLine cmd = parseCommandLine(args);
 		String outputdir = cmd.getOptionValue(OUTPUT[1]);
+		String sinkbatchsize = cmd.getOptionValue(SINKBATHSIZE[1]);
+		String sinkthread = cmd.getOptionValue(SINKTHREAD[1]);
 		String esindexname = cmd.getOptionValue(ESINDEXNAME[1]);
 		String esindextype = cmd.getOptionValue(ESINDEXTYPE[1]);
 		String eshost = cmd.getOptionValue(ESHOST[1]);
@@ -55,9 +59,14 @@ public class ConfigFactory {
 		c.setEsindextype(esindextype);
 		c.setEshost(eshost);
 		c.setEspost(esport);
-		
+		c.setSinkthread(sinkthread);
 		c.setExport_num(0);
 		c.setLucene_dir(lucene_dir);
+		c.setSinkbathsize(sinkbatchsize);
+		if("".equals(sinkbatchsize)||null==sinkbatchsize) {
+			c.setSinkbathsize("2000");
+		}
+			
 		
 		
 //		for (ActionType o : ActionType.values()) {
@@ -106,6 +115,7 @@ public class ConfigFactory {
 		Options cliOptions = new Options();
 		cliOptions.addOption(ACTION_TYPE[0], ACTION_TYPE[1], true, "action type [" + ActionType.getNames() + "]");
 		cliOptions.addOption(OUTPUT[0], OUTPUT[1], true, "数据输出路径");
+		cliOptions.addOption(SINKTHREAD[0], SINKTHREAD[1], true, "sink线程数");
 		cliOptions.addOption(SOURCE_TYPE[0], SOURCE_TYPE[1], true, "source type [" + SourceType.getNames() + "]");
 		cliOptions.addOption(SINK_TYPE[0], SINK_TYPE[1], true, "sink type [" + SinkType.getNames() + "]");
 		cliOptions.addOption(ESINDEXNAME[0],ESINDEXNAME[1], true, "esindexname");

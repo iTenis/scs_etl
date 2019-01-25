@@ -75,6 +75,8 @@ public class CommandLineConfig {
 	private String espost ;
 	private int export_num ;
 	private String lucene_dir ;
+	private String sinkthread;
+	private String sinkbathsize;
 
 	/**
 	 * @return the ActionType
@@ -170,6 +172,22 @@ public class CommandLineConfig {
 
 	public void setLucene_dir(String lucene_dir) {
 		this.lucene_dir = lucene_dir;
+	}
+
+	public String getSinkthread() {
+		return sinkthread;
+	}
+
+	public void setSinkthread(String sinkthread) {
+		this.sinkthread = sinkthread;
+	}
+
+	public String getSinkbathsize() {
+		return sinkbathsize;
+	}
+
+	public void setSinkbathsize(String sinkbathsize) {
+		this.sinkbathsize = sinkbathsize;
 	}
 
 

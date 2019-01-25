@@ -47,7 +47,7 @@ public class App {
 		case SINKFILE:
 			try {
 				threadPool = ThreadPool.getThreadPool();
-				for (int i = 0; i < 3; i++) {
+				for (int i = 0; i < Integer.valueOf(App.cmd.getSinkthread()); i++) {
 					threadPool.execute(Consumer.getInstance());
 				}
 			} catch (Exception e) {
