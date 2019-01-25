@@ -7,6 +7,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.MissingArgumentException;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.huawei.config.CommandLineConfig.ActionType;
@@ -65,7 +66,7 @@ public class ConfigFactory {
 		c.setExport_num(0);
 		c.setLucene_dir(lucene_dir);
 		c.setSinkbathsize(sinkbatchsize);
-		c.setDelimiter(delimiter);
+		c.setDelimiter(StringEscapeUtils.unescapeJava(delimiter));
 		if("".equals(sinkbatchsize)||null==sinkbatchsize) {
 			c.setSinkbathsize("2000");
 		}
@@ -133,6 +134,7 @@ public class ConfigFactory {
 		cliOptions.addOption(ESPORT[0],ESPORT[1], true, "esport");
 		cliOptions.addOption(LUCENE_DIR[0],LUCENE_DIR[1], true, "lucene_dir");
 		cliOptions.addOption(HELP[0], HELP[1], false, "help");
+		cliOptions.addOption(DELIMITER[0], DELIMITER[1], true, "delimiter");
 		CommandLineParser parser = new DefaultParser();
 		CommandLine cmd = parser.parse(cliOptions, args);
 

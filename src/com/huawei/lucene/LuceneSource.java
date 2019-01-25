@@ -40,25 +40,24 @@ public class LuceneSource {
 				Iterator<IndexableField> iterator = doc.iterator();
 				
 				
-				jsonobj = new JsonObject();
-				while (iterator.hasNext()) {
-					IndexableField entry = iterator.next();
-					jsonobj.addProperty(entry.name(), entry.stringValue());
-				}
-				TaskQueue.put(jsonobj.toString());
-				
-//				StringBuilder builder =new StringBuilder();
+//				jsonobj = new JsonObject();
 //				while (iterator.hasNext()) {
 //					IndexableField entry = iterator.next();
-//					builder.append(entry.stringValue());
+//					jsonobj.addProperty(entry.name(), entry.stringValue());
 //				}
-//				TaskQueue.put(builder.toString());
+//				TaskQueue.put(jsonobj.toString());
+				
+				StringBuilder builder =new StringBuilder();
+				while (iterator.hasNext()) {
+					IndexableField entry = iterator.next();
+					builder.append(entry.stringValue()).append(App.cmd.getDelimiter());
+				}
+				TaskQueue.put(builder.toString());
 				
 			}
 			if (newlastdoc != lastdoc) {
 				searchPageBySearchAfter(indexDir, queryString, pageSize, newlastdoc);
 				System.out.println("export end---------------");
-				
 				Timer timer = new Timer();
 				timer.schedule(new TimerTask() {
 					@Override
