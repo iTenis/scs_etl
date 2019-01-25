@@ -2,10 +2,10 @@ package com.huawei.main;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import com.huawei.es.EsSink;
-import com.huawei.file.FileSink;
+import com.huawei.sink.EsSink;
+import com.huawei.sink.FileSink;
+
 
 public class Consumer implements Runnable {
 	private static Consumer consumer;
