@@ -40,19 +40,19 @@ public class LuceneSource {
 				Iterator<IndexableField> iterator = doc.iterator();
 				
 				
-//				jsonobj = new JsonObject();
-//				while (iterator.hasNext()) {
-//					IndexableField entry = iterator.next();
-//					jsonobj.addProperty(entry.name(), entry.stringValue());
-//				}
-//				TaskQueue.put(jsonobj.toString());
-				
-				StringBuilder builder =new StringBuilder();
+				jsonobj = new JsonObject();
 				while (iterator.hasNext()) {
 					IndexableField entry = iterator.next();
-					builder.append(entry.stringValue());
+					jsonobj.addProperty(entry.name(), entry.stringValue());
 				}
-				TaskQueue.put(builder.toString());
+				TaskQueue.put(jsonobj.toString());
+				
+//				StringBuilder builder =new StringBuilder();
+//				while (iterator.hasNext()) {
+//					IndexableField entry = iterator.next();
+//					builder.append(entry.stringValue());
+//				}
+//				TaskQueue.put(builder.toString());
 				
 			}
 			if (newlastdoc != lastdoc) {
@@ -69,7 +69,6 @@ public class LuceneSource {
 						}
 					}
 				}, 5000);
-//				System.exit(0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

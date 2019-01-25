@@ -77,6 +77,7 @@ public class CommandLineConfig {
 	private String lucene_dir ;
 	private String sinkthread;
 	private String sinkbathsize;
+	private String separator;
 
 	/**
 	 * @return the ActionType
@@ -188,6 +189,14 @@ public class CommandLineConfig {
 
 	public void setSinkbathsize(String sinkbathsize) {
 		this.sinkbathsize = sinkbathsize;
+	}
+
+	public String getSeparator() {
+		return separator;
+	}
+
+	public void setSeparator(String separator) {
+		this.separator = separator;
 	}
 
 
