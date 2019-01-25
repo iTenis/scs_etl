@@ -36,7 +36,13 @@
 	<classpathentry kind="lib" path="libs/httpcore-nio-4.4.5.jar"/>
 	<classpathentry kind="lib" path="libs/elasticsearch-rest-client-6.1.3.jar"/>
 	<classpathentry kind="lib" path="lib/commons-cli-1.3.1.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="lib/lucene-core-5.3.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_79"/>
+=======
+	<classpathentry kind="lib" path="lib/lucene-core-6.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-core-5.3.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+>>>>>>> branch 'master' of https://github.com/iTenis/scs_etl.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
