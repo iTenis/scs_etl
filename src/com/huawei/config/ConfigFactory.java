@@ -18,6 +18,7 @@ public class ConfigFactory {
 	private static Logger logger = LoggerFactory.getLogger(ConfigFactory.class);
 	private static final String[] ACTION_TYPE = new String[] { "a", "actiontype" };
 	private static final String[] SINKBATHSIZE = new String[] { "s", "sinkbathsize" };
+	private static final String[] DELIMITER = new String[] { "l", "delimiter" };
 	private static final String[] SINKTHREAD = new String[] { "t", "sinkthread" };
 	private static final String[] SINK_TYPE = new String[] { "k", "sinktype" };
 	private static final String[] SOURCE_TYPE = new String[] { "e", "sourcetype" };
@@ -32,6 +33,7 @@ public class ConfigFactory {
 	public static CommandLineConfig getConfigFromArgs(String[] args) throws ParseException {
 		CommandLine cmd = parseCommandLine(args);
 		String outputdir = cmd.getOptionValue(OUTPUT[1]);
+		String delimiter = cmd.getOptionValue(DELIMITER[1]);
 		String sinkbatchsize = cmd.getOptionValue(SINKBATHSIZE[1]);
 		String sinkthread = cmd.getOptionValue(SINKTHREAD[1]);
 		String esindexname = cmd.getOptionValue(ESINDEXNAME[1]);
@@ -63,11 +65,15 @@ public class ConfigFactory {
 		c.setExport_num(0);
 		c.setLucene_dir(lucene_dir);
 		c.setSinkbathsize(sinkbatchsize);
+		c.setDelimiter(delimiter);
 		if("".equals(sinkbatchsize)||null==sinkbatchsize) {
 			c.setSinkbathsize("2000");
 		}
 		if("".equals(sinkthread)||null==sinkthread) {
 			c.setSinkthread("2");
+		}
+		if("".equals(delimiter)||null==delimiter) {
+			c.setDelimiter("\t");
 		}
 			
 		
