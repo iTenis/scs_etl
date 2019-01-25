@@ -8,7 +8,7 @@ import org.elasticsearch.client.RestClient;
 
 import com.huawei.config.CommandLineConfig;
 import com.huawei.config.ConfigFactory;
-import com.huawei.lucene.LuceneSource;
+import com.huawei.source.LuceneSource;
 
 public class App {
 
