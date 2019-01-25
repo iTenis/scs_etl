@@ -1,0 +1,8 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<switch>
+    <config key = "isNoticeUser" value="1" />
+    <config key = "userName" value="melody" />
+    <config key = "userPwd" value="123456" />
+    <config key = "userAge" value="28" />
+    <config key = "userSex" value="man" />
+</switch>
